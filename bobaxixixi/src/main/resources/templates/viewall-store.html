@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+ 
+<head>
+    <meta charset = "UTF-8">
+    <title>BOBAXIXIXI</title>
+    <object th:include = "fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
+</head>
+ 
+<body>
+<nav th:replace= "fragments/fragment :: navbar('store')"></nav>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <div class="col">
+                        <br>
+                        <h2>List of Store </h2>
+                        <td>
+                            <a class="btn btn-sm btn-primary" th:href="@{/store/add/}">Add Store</a>
+                        </td>
+                        <div th:if = "*{listStore.size() != 0}">
+                            <table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th> No </th>
+                                        <th> Store Code</th>
+                                        <th> Name </th>
+                                        <th> Address </th>
+                                        <th> Operational Hour </th>
+                                        <th> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each = "store, iterationStatus : ${listStore}"
+                                        th:style = "${iterationStatus.even} ? 'font-weight: bold;'">
+                                        <td th:text = "${iterationStatus.count}"></td>
+                                        <td th:text = "${store.storeCode}"></td>
+                                        <td th:text = "${store.namaStore}"></td>
+                                        <td th:text = "${store.alamatStore}"></td>
+                                        <td th:text = "${store.openHour} + ' - ' + ${store.closeHour}"></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" th:href="@{/store/view/} + ${store.idStore}">View</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" th:href="@{/store/update/} + ${store.idStore}">Update</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-danger" th:href="@{/store/delete/} + ${store.idStore}">Delete</a>
+                                        </td>
+                                        </tr>
+                                        </tbody>
+                            </table>
+                        </div>
+            
+                        <div th:unless="*{listStore.size() != 0}">
+                            <h2 th:text = "'There is no available Store to show.'"></h2>
+                        </div>
+                        <hr>
+                    </div>
+                        <br>
+                        <a class="btn btn-primary" href="/#">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <nav th:replace= "fragments/fragment :: footer('destinasi')"></nav> -->
+        </body>
+</html>

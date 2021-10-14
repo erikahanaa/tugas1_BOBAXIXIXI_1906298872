@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://t...content-available-to-author-only...f.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BOBAXIXIXI</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    </head>    
+<body>
+<nav th:replace="fragments/fragment :: navbar('store')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2>Add New Store</h2>
+                <br>
+                <form th:action="@{/store/add}" th:object="${store}" method="POST">
+                    Store Name: <br>
+                    <input class="form-control" type="text" name="namaStore"/>
+                    <br><br>
+ 
+                    Address: <br>
+                    <input class="form-control" type="text" name="alamatStore"/>
+                    <br><br>
+
+                    Store Code: <br>
+                    <input class="form-control" type="text" name="storeCode"/>
+                    <br><br>
+ 
+                    Open Hour: <br>
+                    <input class="form-control" type="time" name="openHour" />
+                    <br><br>
+ 
+                    Close Hour: <br>
+                    <input class="form-control" type="time" name="closeHour" />
+                    <br><br>
+
+                    Manager: <br>
+                    <select name = "manager" class="form-control">
+                        <option th:each = "manager : ${listManager}"
+                            th:text="${manager.namaManager}"
+                            th:value="${manager.idManager}">
+                        </option>
+                    </select>
+                    <br><br>
+
+                    <button class="btn btn-primary" type="submit" name="save">Submit</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+</body>
+</html>

@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface StoreDb extends JpaRepository<StoreModel, Long>{
     Optional<StoreModel> findByIdStore(String idStore);
+    StoreModel findByStoreCode(String storeCode);
     // List<StoreModel> findAllByStoreModels();
 }

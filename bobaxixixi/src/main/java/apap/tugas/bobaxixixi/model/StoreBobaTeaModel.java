@@ -22,7 +22,6 @@ import java.math.BigInteger;
 
 public class StoreBobaTeaModel implements Serializable{
     @Id
-    @Size(max=20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idStoreBoba; //long or bigint ya
 

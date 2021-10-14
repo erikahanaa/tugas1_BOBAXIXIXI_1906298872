@@ -23,7 +23,6 @@ import java.util.List;
 
 public class StoreModel implements Serializable{
     @Id
-    @Size(max=20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idStore; //long or bigint ya
 
@@ -53,9 +52,6 @@ public class StoreModel implements Serializable{
     private LocalTime closeHour;
 
     // Relasi dengan Manager
-    // @OneToOne(mappedBy = "id_manager", fetch = FetchType.LAZY, cascade = CascadeType.ALL) // not sure manager or store
-    // private ManagerModel idManager;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_manager", referencedColumnName = "idManager", nullable = false)
     private ManagerModel manager;

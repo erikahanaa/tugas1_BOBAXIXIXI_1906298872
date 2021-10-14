@@ -21,7 +21,6 @@ import java.math.BigInteger;
 
 public class BobaTeaModel implements Serializable{
     @Id
-    @Size(max=20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idBoba; //long or bigint ya
 
