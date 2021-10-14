@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset = "UTF-8">
+    <title>BOBAXIXIXI</title>
+    <object th:include = "fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<!-- <body>
+    <nav th:replace= "fragments/fragment :: navbar('home')"></nav> -->
+    <div class="d-flex justify-content-center">
+        <div class="m-4">
+            <h2>WELCOME TO BOBAXIXIXI!</h2>
+            <h4>List of Features:</h4>
+            <h5>Store</h5>
+            <h5>Boba Tea</h5>
+            <h5>Search</h5>
+            <h5>Filter</h5>
+            <!-- <div class="d-flex justify-content-center">
+                <a th:href="@{/agensi/viewall}" class="mx-2 btn btn-primary">View All Agensi</a>
+                <a th:href = "@{/agensi/add}" class="mx-2 btn btn-outline-primary">Add Agensi</a>
+            </div>
+            <div class = "my-3 d-flex justify-content-center">
+                <a th:href="@{/destinasi/viewall}" class="mx-2 btn btn-primary">View All Destinasi</a>
+                <a th:href="@{/destinasi/add}" class = "mx-2 btn btn-outline-primary">Add Destinasi</a>
+            </div> -->
+        </div>
+    </div>
+    <!-- <nav th:replace= "fragments/fragment :: footer('home')"></nav> -->
+</body>
+</html>
