@@ -9,4 +9,6 @@ public interface StoreService {
     String getStoreCode(StoreModel store);
     StoreModel getStoreByStoreCode(String storeCode);
     StoreModel getStoreByIdStore(Long idStore);
+    StoreModel updateStore(StoreModel store);
+    void deleteStore(StoreModel store);
 }

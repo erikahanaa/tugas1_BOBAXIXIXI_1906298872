@@ -11,9 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.math.BigInteger;
 import java.time.LocalTime;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -53,7 +51,7 @@ public class StoreModel implements Serializable{
 
     // Relasi dengan Manager
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_manager", referencedColumnName = "idManager", nullable = false)
+    @JoinColumn(name = "id_manager", referencedColumnName = "idManager", nullable = false, unique = true)
     private ManagerModel manager;
 
 }

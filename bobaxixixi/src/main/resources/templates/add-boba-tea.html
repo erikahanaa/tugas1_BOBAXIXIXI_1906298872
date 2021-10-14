@@ -7,14 +7,14 @@
     <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-<nav th:replace= "fragments/fragment :: navbar('store')"></nav>
+<nav th:replace= "fragments/fragment :: navbar('bobaTea')"></nav>
 <div class="container">
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2 th:text="'Store with store code ' + ${storeCode} + ' successfully added!'"></h2>
+                <h2 th:text="'Boba Tea with name ' + ${namaBoba} + ' successfully added!'"></h2>
                 <br>
-                <a class="btn btn-primary" href="/store/">Back to Store List</a>
+                <a class="btn btn-primary" href="/boba/">Back to Boba Tea List</a>
             </div>
         </div>
     </div>

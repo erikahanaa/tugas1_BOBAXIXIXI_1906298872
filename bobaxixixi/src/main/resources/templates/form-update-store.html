@@ -12,30 +12,31 @@
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2>Add New Store</h2>
+                <h2>Update Store</h2>
                 <br>
-                <form th:action="@{/store/add}" th:object="${store}" method="POST">
+                <form th:action="@{/store/update}" th:object="${store}" method="POST">
                     Store Name: <br>
-                    <input class="form-control" type="text" name="namaStore"/>
+                    <input class="form-control" type="text" name="namaStore" th:value="*{namaStore}"/>
                     <br><br>
  
                     Address: <br>
-                    <input class="form-control" type="text" name="alamatStore"/>
+                    <input class="form-control" type="text" name="alamatStore" th:value="*{alamatStore}"/>
                     <br><br>
  
                     Open Hour: <br>
-                    <input class="form-control" type="time" name="openHour" />
+                    <input class="form-control" type="time" name="openHour" th:value="*{openHour}" />
                     <br><br>
  
                     Close Hour: <br>
-                    <input class="form-control" type="time" name="closeHour" />
+                    <input class="form-control" type="time" name="closeHour" th:value="*{closeHour}" />
                     <br><br>
 
                     Manager: <br>
                     <select name = "manager" class="form-control">
                         <option th:each = "manager : ${listManager}"
                             th:text="${manager.namaManager}"
-                            th:value="${manager.idManager}">
+                            th:value="${manager.idManager}"
+                            th:selected="(${manager.idManager} == *{manager.idManager})">
                         </option>
                     </select>
                     <br><br>

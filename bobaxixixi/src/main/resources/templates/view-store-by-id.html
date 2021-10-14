@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+ 
+<head>
+    <meta charset = "UTF-8">
+    <title>BOBAXIXIXI</title>
+    <object th:include = "fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
+</head>
+ 
+<body>
+<nav th:replace= "fragments/fragment :: navbar('store')"></nav>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <div class="col">
+                        <h2>Store Detail</h2>
+                        <br>
+                        <p th:text="'Store Name   : ' + ${store.namaStore}"></p>
+                        <p th:text="'Address      : ' + ${store.alamatStore}"></p>
+                        <p th:text="'Open Hour    : ' + ${store.openHour}"></p>
+                        <p th:text="'Close Hour   : ' + ${store.closeHour}"></p>
+                        <p th:text="'Manager      : ' + ${store.manager.namaManager}"></p>
+                        <p th:text="'Store Code   : ' + ${store.storeCode}"></p>
+                    </div>
+                    <a class="btn btn-primary" href="/store/">Back to Store List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

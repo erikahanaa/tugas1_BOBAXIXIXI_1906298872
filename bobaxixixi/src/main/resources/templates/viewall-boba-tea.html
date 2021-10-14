@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+ 
+<head>
+    <meta charset = "UTF-8">
+    <title>BOBAXIXIXI</title>
+    <object th:include = "fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
+</head>
+ 
+<body>
+<nav th:replace= "fragments/fragment :: navbar('bobaTea')"></nav>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <div class="col">
+                        <br>
+                        <h2>List of Boba Tea </h2>
+                        <td>
+                            <a class="btn btn-sm btn-primary" th:href="@{/boba/add/}">Add Boba Tea</a>
+                        </td>
+                        <div th:if = "*{listBobaTea.size() != 0}">
+                            <table class = "table">
+                                <thead>
+                                    <tr>
+                                        <th> No </th>
+                                        <th> Name</th>
+                                        <th> Price </th>
+                                        <th> Size </th>
+                                        <th> Ice </th>
+                                        <th> Sugar </th>
+                                        <th> Topping </th>
+                                        <th></th>
+                                        <th> Action </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each = "bobaTea, iterationStatus : ${listBobaTea}"
+                                        th:style = "${iterationStatus.even} ? 'font-weight: bold;'">
+                                        <td th:text = "${iterationStatus.count}"></td>
+                                        <td th:text = "${bobaTea.namaBoba}"></td>
+                                        <td th:text = "${bobaTea.hargaBoba}"></td>
+                                        <td>
+                                            <div th:if="${bobaTea.sizeBoba == 0}">S</div>
+                                            <div th:if="${bobaTea.sizeBoba == 1}">M</div>
+                                            <div th:if="${bobaTea.sizeBoba == 2}">L</div>
+                                        </td>
+                                        <td>
+                                            <div th:if="${bobaTea.iceLevel == 0}">Less</div>
+                                            <div th:if="${bobaTea.iceLevel == 1}">Normal</div>
+                                            <div th:if="${bobaTea.iceLevel == 2}">Extra</div>
+                                        </td>
+                                        <td>
+                                            <div th:if="${bobaTea.sugarLevel == 0}">Less</div>
+                                            <div th:if="${bobaTea.sugarLevel == 1}">Normal</div>
+                                            <div th:if="${bobaTea.sugarLevel == 2}">Extra</div>
+                                        </td>
+                                        <td th:text = "${bobaTea.topping.namaTopping}"></td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" th:href="@{/boba/}+ ${bobaTea.idBoba}">View</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" th:href="@{/boba/update/} + ${bobaTea.idBoba}">Update</a>
+                                        </td>
+                                        <td>
+                                            <form th:action="@{/boba/delete/} + ${bobaTea.idBoba}" th:object="${bobaTea}" method="POST">
+                                            <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                                            <input type="hidden" th:value="${bobaTea.idBoba}"/>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+            
+                        <div th:unless="*{listBobaTea.size() != 0}">
+                            <h2 th:text = "'There is no available Boba Tea to show.'"></h2>
+                        </div>
+                        <hr>
+                    </div>
+                        <br>
+                        <a class="btn btn-primary" href="/#">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <nav th:replace= "fragments/fragment :: footer('destinasi')"></nav> -->
+        </body>
+</html>

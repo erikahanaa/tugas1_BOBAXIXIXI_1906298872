@@ -29,7 +29,9 @@
                                         <th> Name </th>
                                         <th> Address </th>
                                         <th> Operational Hour </th>
+                                        <th></th>
                                         <th> Action </th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,16 +43,19 @@
                                         <td th:text = "${store.alamatStore}"></td>
                                         <td th:text = "${store.openHour} + ' - ' + ${store.closeHour}"></td>
                                         <td>
-                                            <a class="btn btn-sm btn-primary" th:href="@{/store/view/} + ${store.idStore}">View</a>
+                                            <a class="btn btn-sm btn-primary" th:href="@{/store/}+ ${store.idStore}">View</a>
                                         </td>
                                         <td>
                                             <a class="btn btn-sm btn-primary" th:href="@{/store/update/} + ${store.idStore}">Update</a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-sm btn-danger" th:href="@{/store/delete/} + ${store.idStore}">Delete</a>
+                                            <form th:action="@{/store/delete/} + ${store.idStore}" th:object="${store}" method="POST">
+                                            <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                                            <input type="hidden" th:value="${store.idStore}"/>
+                                            </form>
                                         </td>
-                                        </tr>
-                                        </tbody>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
             
