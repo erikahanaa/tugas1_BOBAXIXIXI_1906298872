@@ -66,7 +66,7 @@
                     <td th:if = "${bobaTea.sugarLevel} == 0" th:text="Less"></td>
                     <td th:if = "${bobaTea.sugarLevel} == 1" th:text="Normal"></td>
                     <td th:if = "${bobaTea.sugarLevel} == 2" th:text="Extra"></td>
-                    <td th:if = "${bobaTea.topping} == null" th:text="No Topping"></td>
+                    <td th:if = "${bobaTea.topping} == null" th:text="'No Topping'"></td>
                     <td th:if = "${bobaTea.topping} != null" th:text="${bobaTea.topping.idTopping}"></td>
                 </tr>
                 <tr th:each="bobaTea, iterationStatus : ${listUnaddedBoba}" style = "text-align: center;">
@@ -82,11 +82,15 @@
                     <td th:if = "${bobaTea.sugarLevel} == 0" th:text="Less"></td>
                     <td th:if = "${bobaTea.sugarLevel} == 1" th:text="Normal"></td>
                     <td th:if = "${bobaTea.sugarLevel} == 2" th:text="Extra"></td>
-                    <td th:if = "${bobaTea.topping} == null" th:text="No Topping"></td>
+                    <td th:if = "${bobaTea.topping} == null" th:text="'No Topping'"></td>
                     <td th:if = "${bobaTea.topping} != null" th:text="${bobaTea.topping.namaTopping}"></td>
                 </tr>
                 </tbody>
             </table>
+            <br>
+            <div style = "text-align: center;">
+                <button id="button" type="submit" name="save">Submit</button>
+            </div>
             </div>
         </div>
     </div>
