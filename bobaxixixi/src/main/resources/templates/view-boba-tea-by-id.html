@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+ 
+<head>
+    <meta charset = "UTF-8">
+    <title>BOBAXIXIXI</title>
+    <object th:include = "fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
+</head>
+ 
+<body>
+<nav th:replace= "fragments/fragment :: navbar('bobaTea')"></nav>
+    <div class="container">
+        <div class="card m-4 p-4">
+            <div class="card-body">
+                <div class="justify-content-center">
+                    <div class="col">
+                        <h2>Boba Tea Detail</h2>
+                        <br>
+                        <p th:text="'Boba Tea Name  : ' + ${bobaTea.namaBoba}"></p>
+                        <p th:text="'Price          : ' + ${bobaTea.hargaBoba}"></p>
+                        <p th:if = "${bobaTea.sizeBoba} == 0"> S </td>
+                        <p th:if = "${bobaTea.sizeBoba} == 1"> M </td>
+                        <p th:if = "${bobaTea.sizeBoba} == 2"> L </td>
+                        <p th:if = "${bobaTea.iceLevel} == 0"> Less </td>
+                        <p th:if = "${bobaTea.iceLevel} == 1"> Normal </td>
+                        <p th:if = "${bobaTea.iceLevel} == 2"> Extra </td>
+                        <p th:if = "${bobaTea.sugarLevel} == 0"> Less </td>
+                        <p th:if = "${bobaTea.sugarLevel} == 1"> Normal </td>
+                        <p th:if = "${bobaTea.sugarLevel} == 2"> Extra </td>
+                        <p th:text="'Topping        : ' + ${bobaTea.topping.idTopping}"></p>
+                    </div>
+                    <a class="btn btn-primary" href="/boba/">Back to Boba Tea List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

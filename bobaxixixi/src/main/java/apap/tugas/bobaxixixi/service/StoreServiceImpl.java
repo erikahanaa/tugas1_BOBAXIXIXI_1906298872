@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
  
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -32,7 +33,12 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public StoreModel getStoreByIdStore(Long idStore){
-        return storeDb.findById(idStore).get();
+        // return storeDb.findById(idStore).get();
+        Optional<StoreModel> store = storeDb.findById(idStore);
+        if (store.isPresent()){
+            return store.get();
+        } 
+        else return null;
     }
 
     @Override

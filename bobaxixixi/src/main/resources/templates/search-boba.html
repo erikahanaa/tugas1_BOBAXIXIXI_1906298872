@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset = "UTF-8">
+    <title>BOBAXIXIXI</title>
+    <object th:include = "fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace= "fragments/fragment :: navbar('search')"></nav>
+<div class="container">
+    <table class="table">
+            <form th:action="@{/search/}" method="GET">
+                <thead>
+                <tr>
+                    <td> Boba Name </td>
+                    <td> Topping Name </td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div>
+                            <select name="bobaTea">
+                                <option value="">Boba Name</option>
+                                <option th:each="bobaTea : ${listBobaTea}" th:text="${bobaTea.namaBoba}" th:value="${bobaTea.namaBoba}"></option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="topping">
+                                <option value="">Topping Name</option>
+                                <option th:each="topping : ${listTopping}" th:text="${topping.namaTopping}" th:value="${topping.namaTopping}"></option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary text-white" type="submit"> Submit </button>
+                    </td>
+                </tr>
+                </tbody>
+            </form>
+    </table>
+
+        <div>Boba Tea List Based on Topping</div>
+        <table class="table">
+        <thead>
+        <tr>
+            <td> No </td>
+            <td> Price </td>
+            <td> Size </td>
+            <td> Ice </td>
+            <td> Sugar </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bobaTea, iterationStatus : ${listBoba}">
+            <td th:text="${iterationStatus.count}"></td>
+            <td th:text="${bobaTea.hargaBoba}"></td>
+            <td th:text="${bobaTea.sizeBoba}"></td>
+            <td th:text="${bobaTea.iceLevel}"></td>
+            <td th:text="${bobaTea.sugarLevel}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

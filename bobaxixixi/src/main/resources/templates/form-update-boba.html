@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://t...content-available-to-author-only...f.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BOBAXIXIXI</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    </head>    
+<body>
+<nav th:replace="fragments/fragment :: navbar('bobaTea')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2>Update Boba Tea</h2>
+                <br>
+                <form th:action="@{/boba/update}" th:object="${bobaTea}" method="POST">
+                    <input type="hidden" th:field="*{idBoba}" />
+                    Boba Tea Name: <br>
+                    <input class="form-control" type="text" name="namaBoba" th:value="*{namaBoba}"/>
+                    <br><br>
+ 
+                    Price: <br>
+                    <input class="form-control" type="number" name="hargaBoba" th:value="*{hargaBoba}"/>
+                    <br><br>
+ 
+                    Size: <br>
+                    <select name="sizeBoba", th:value="*{{sizeBoba}}">
+                        <option value="0">S</option>
+                        <option value="1">M</option>
+                        <option value="2">L</option>
+                    </select>
+                    <br><br>
+ 
+                    Ice Level: <br>
+                    <select name="iceLevel", th:value="*{{iceLevel}}">
+                        <option value="0">Less</option>
+                        <option value="1">Normal</option>
+                        <option value="2">Extra</option>
+                    </select>
+                    <br><br>
+
+                    Sugar Level: <br>
+                    <select name="sugarLevel", th:value="*{{sugarLevel}}">
+                        <option value="0">Less</option>
+                        <option value="1">Normal</option>
+                        <option value="2">Extra</option>
+                    </select>
+                    <br><br>
+
+                    Topping: <br>
+                    <select name = "topping" class="form-control">
+                        <option th:each = "topping : ${listTopping}"
+                            th:text="${topping.namaTopping}"
+                            th:value="${topping.idTopping}"
+                            th:selected="(${topping.idTopping} == *{topping.idTopping})">
+                        </option>
+                    </select>
+                    <br><br>
+
+                    <button class="btn btn-primary" type="submit" name="save">Submit</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+</body>
+</html>

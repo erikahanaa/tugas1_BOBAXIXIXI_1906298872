@@ -15,6 +15,7 @@
                 <h2>Update Store</h2>
                 <br>
                 <form th:action="@{/store/update}" th:object="${store}" method="POST">
+                    <input type="hidden" th:field="*{idStore}" />
                     Store Name: <br>
                     <input class="form-control" type="text" name="namaStore" th:value="*{namaStore}"/>
                     <br><br>

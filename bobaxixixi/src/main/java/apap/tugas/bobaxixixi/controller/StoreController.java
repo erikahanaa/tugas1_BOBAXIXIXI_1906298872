@@ -1,8 +1,8 @@
 package apap.tugas.bobaxixixi.controller;
 
 import apap.tugas.bobaxixixi.model.StoreModel;
-import apap.tugas.bobaxixixi.repository.ManagerDb;
 import apap.tugas.bobaxixixi.model.ManagerModel;
+import apap.tugas.bobaxixixi.model.StoreBobaTeaModel;
 import apap.tugas.bobaxixixi.service.StoreService;
 import apap.tugas.bobaxixixi.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,9 +66,9 @@ public class StoreController {
     public String findStoreByIdStore(
         @PathVariable long idStore, Model model){
         StoreModel store = storeService.getStoreByIdStore(idStore);
-        // List<StoreBobaTeaModel> listStoreBobaTea = store.getListStoreBobaTea();
+        List<StoreBobaTeaModel> listStoreBobaTea = store.getListStoreBobaTea();
         model.addAttribute("store", store);
-        // model.addAttribute("listStoreBobaTea", listStoreBobaTea);
+        model.addAttribute("listStoreBobaTea", listStoreBobaTea);
         return "view-store-by-id";
     }
 
@@ -106,12 +106,20 @@ public class StoreController {
             LocalTime openHour = storeGet.getOpenHour();
             LocalTime closeHour = storeGet.getCloseHour();
             LocalTime currentTime = LocalTime.now();
+            int jumlahBoba = storeGet.getListStoreBobaTea().size();
             
-            if ((closeHour.isBefore(currentTime) || openHour.isAfter(currentTime))){
+            if ((closeHour.isBefore(currentTime) || openHour.isAfter(currentTime) && (jumlahBoba == 0))){
                 storeService.deleteStore(storeGet);
+                model.addAttribute("storeCode", storeGet.getStoreCode());
                 return "delete-store";
             }
-            
+
+            if ((closeHour.isBefore(currentTime) || openHour.isAfter(currentTime) && (jumlahBoba != 0))){
+                model.addAttribute("storeCode", storeGet.getStoreCode());
+                return "delete-store-failed-boba";
+            }
+
+            model.addAttribute("storeCode", storeGet.getStoreCode());
             return "delete-store-failed";
         }
     }

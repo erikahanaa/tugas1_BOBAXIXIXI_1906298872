@@ -22,4 +22,9 @@ public class ToppingServiceImpl implements ToppingService{
     public List<ToppingModel> getListTopping(){
         return toppingDb.findAll();
     }
+
+    @Override
+    public ToppingModel getToppingByNama(String namaTopping){
+        return toppingDb.findByNamaTopping(namaTopping);
+    }
 }

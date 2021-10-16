@@ -24,6 +24,34 @@
                         <p th:text="'Manager      : ' + ${store.manager.namaManager}"></p>
                         <p th:text="'Store Code   : ' + ${store.storeCode}"></p>
                     </div>
+                    <br>
+                    <h4>List of Boba Tea</h4>
+                    <div th:if = "*{listStoreBobaTea.size() != 0}">
+                        <table class = "table">
+                            <thead>
+                                <tr>
+                                    <th> No </th>
+                                    <th> Name</th>
+                                    <th> Topping </th>
+                                    <th> Price </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each = "bobaTea, iterationStatus : ${listStoreBobaTea}"
+                                    th:style = "${iterationStatus.even} ? 'font-weight: bold;'">
+                                    <td th:text = "${iterationStatus.count}"></td>
+                                    <td th:text = "${bobaTea.bobaTea.namaBoba}"></td>
+                                    <td th:text = "${bobaTea.bobaTea.topping.namaTopping}"></td>
+                                    <td th:text = "${bobaTea.bobaTea.hargaBoba}"></td>
+                                    </tr>
+                                    </tbody>
+                        </table>
+                    </div>
+                
+                    <div th:unless="*{listStoreBobaTea.size() != 0}">
+                        <h6 th:text = "'There is no Boba Tea available in this store.'"></h6>
+                    </div>
+                    <br>
                     <a class="btn btn-primary" href="/store/">Back to Store List</a>
                 </div>
             </div>

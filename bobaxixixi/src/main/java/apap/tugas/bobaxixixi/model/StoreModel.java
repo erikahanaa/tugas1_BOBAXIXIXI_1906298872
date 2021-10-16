@@ -12,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,8 +51,11 @@ public class StoreModel implements Serializable{
     private LocalTime closeHour;
 
     // Relasi dengan Manager
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_manager", referencedColumnName = "idManager", nullable = false, unique = true)
     private ManagerModel manager;
 
+    // Relasi dengan StoreBobaModel
+    @OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<StoreBobaTeaModel> listStoreBobaTea;
 }

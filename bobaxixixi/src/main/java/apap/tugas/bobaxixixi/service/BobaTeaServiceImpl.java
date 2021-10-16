@@ -21,12 +21,32 @@ public class BobaTeaServiceImpl implements BobaTeaService{
     }
 
     @Override
-    public Optional<BobaTeaModel> getBobaTeaById(Long idBoba){
-      return bobaTeaDb.findById(idBoba);
+    public BobaTeaModel getBobaTeaById(Long idBoba){
+        Optional<BobaTeaModel> bobaTea = bobaTeaDb.findByIdBoba(idBoba);
+        if (bobaTea.isPresent()){
+            return bobaTea.get();
+        } 
+        else return null;
     }
 
     @Override
     public List<BobaTeaModel> getListBobaTea(){
         return bobaTeaDb.findAll();
+    }
+
+    @Override
+    public BobaTeaModel updateBobaTea(BobaTeaModel bobaTea){
+        bobaTeaDb.save(bobaTea);
+        return bobaTea;
+    }
+
+    @Override
+    public void deleteBobaTea(BobaTeaModel bobaTea){
+        bobaTeaDb.delete(bobaTea);
+    }
+
+    @Override
+    public BobaTeaModel getBobaTeaByNama(String namaBoba){
+        return bobaTeaDb.findByNamaBoba(namaBoba);
     }
 }

@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,7 +22,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class BobaTeaModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idBoba; //long or bigint ya
+    private Long idBoba; //long or bigint ya
 
     @NotNull
     @Size(max=255)
@@ -45,9 +46,13 @@ public class BobaTeaModel implements Serializable{
     private Integer sugarLevel;
 
     // Relasi dengan Topping Boba
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_topping", referencedColumnName = "idTopping", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private ToppingModel topping;
+
+    // Relasi dengan StoreBobaTea
+    @OneToMany(mappedBy = "bobaTea", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<StoreBobaTeaModel> listStoreBobaTea;
 }
 
