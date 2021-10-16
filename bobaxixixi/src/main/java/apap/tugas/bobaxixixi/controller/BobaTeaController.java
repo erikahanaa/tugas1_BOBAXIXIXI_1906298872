@@ -72,19 +72,26 @@ public class BobaTeaController {
 
     @GetMapping("/boba/{idBoba}")
     public String findBobaTeaByIdBoba(
-        @PathVariable long idBoba, Model model){
+        @PathVariable Long idBoba, Model model){
         BobaTeaModel bobaTea = bobaTeaService.getBobaTeaById(idBoba);
+        if (bobaTea == null || idBoba == null){
+            return "no-boba";
+        }
         model.addAttribute("bobaTea", bobaTea);
         return "view-boba-tea-by-id";
     }
 
     @GetMapping("/boba/update/{idBoba}")
     public String updateBobaForm(
-        @PathVariable long idBoba, Model model) {
+        @PathVariable Long idBoba, Model model) {
         BobaTeaModel bobaTea = bobaTeaService.getBobaTeaById(idBoba);
         List<ToppingModel> listTopping = toppingService.getListTopping();
         int jumlahBoba = bobaTea.getListStoreBobaTea().size();
-
+        
+        if (bobaTea == null || idBoba == null){
+            return "no-boba";
+        }
+        
         if (jumlahBoba == 0){
             model.addAttribute("bobaTea", bobaTea);
             model.addAttribute("listTopping", listTopping);

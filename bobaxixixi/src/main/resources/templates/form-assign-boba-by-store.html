@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://t...content-available-to-author-only...f.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BOBAXIXIXI</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+</head>   
+    <style>
+        body {
+          background-color: #FFFBE3;
+        }
+        #button {
+        background-color: #B7633B;
+        color: white;
+        border: none;
+        padding: 10px 32px;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 10px;
+        margin: 10px;
+        
+    }
+    #button:hover {
+        background-color: #714033;
+        color: white;
+    }
+    </style> 
+<body>
+<nav th:replace="fragments/fragment :: navbar('bobaTea')"></nav>
+<div class="container">
+    <div class="card m-4 p-4" style = "background-color: #FFFEF5;">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <h1 style="font-family: 'Itim', cursive;">Add Boba Tea to This Store</h1>
+                </div>
+                <br>
+                <table class="table">
+                <br>
+                <thead>
+                <tr style="background-color: #FFDCBD; text-align: center;">
+                    <td style = "font-weight: bold;"> Checkboxes </td>
+                    <td style = "font-weight: bold;"> No </td>
+                    <td style = "font-weight: bold;"> Price </td>
+                    <td style = "font-weight: bold;"> Size </td>
+                    <td style = "font-weight: bold;"> Ice </td>
+                    <td style = "font-weight: bold;"> Sugar </td>
+                    <td style = "font-weight: bold;"> Topping </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="bobaTea, iterationStatus : ${listAddedBoba}" style = "text-align: center;">
+                    <td><input type = "checkbox" name = "checklist" th:value = "${bobaTea.idBoba}" checked></td>
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${bobaTea.hargaBoba}"></td>
+                    <td th:if = "${bobaTea.sizeBoba} == 0" th:text="Small"></td>
+                    <td th:if = "${bobaTea.sizeBoba} == 1" th:text="Medium"></td>
+                    <td th:if = "${bobaTea.sizeBoba} == 2" th:text="Large"></td>
+                    <td th:if = "${bobaTea.iceLevel} == 0" th:text="Less"></td>
+                    <td th:if = "${bobaTea.iceLevel} == 1" th:text="Normal"></td>
+                    <td th:if = "${bobaTea.iceLevel} == 2" th:text="Extra"></td>
+                    <td th:if = "${bobaTea.sugarLevel} == 0" th:text="Less"></td>
+                    <td th:if = "${bobaTea.sugarLevel} == 1" th:text="Normal"></td>
+                    <td th:if = "${bobaTea.sugarLevel} == 2" th:text="Extra"></td>
+                    <td th:if = "${bobaTea.topping} == null" th:text="No Topping"></td>
+                    <td th:if = "${bobaTea.topping} != null" th:text="${bobaTea.topping.idTopping}"></td>
+                </tr>
+                <tr th:each="bobaTea, iterationStatus : ${listUnaddedBoba}" style = "text-align: center;">
+                    <td><input type = "checkbox" name = "checklist" th:value = "${bobaTea.idBoba}"></td>
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${bobaTea.hargaBoba}"></td>
+                    <td th:if = "${bobaTea.sizeBoba} == 0" th:text="Small"></td>
+                    <td th:if = "${bobaTea.sizeBoba} == 1" th:text="Medium"></td>
+                    <td th:if = "${bobaTea.sizeBoba} == 2" th:text="Large"></td>
+                    <td th:if = "${bobaTea.iceLevel} == 0" th:text="Less"></td>
+                    <td th:if = "${bobaTea.iceLevel} == 1" th:text="Normal"></td>
+                    <td th:if = "${bobaTea.iceLevel} == 2" th:text="Extra"></td>
+                    <td th:if = "${bobaTea.sugarLevel} == 0" th:text="Less"></td>
+                    <td th:if = "${bobaTea.sugarLevel} == 1" th:text="Normal"></td>
+                    <td th:if = "${bobaTea.sugarLevel} == 2" th:text="Extra"></td>
+                    <td th:if = "${bobaTea.topping} == null" th:text="No Topping"></td>
+                    <td th:if = "${bobaTea.topping} != null" th:text="${bobaTea.topping.namaTopping}"></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+</body>
+</html>

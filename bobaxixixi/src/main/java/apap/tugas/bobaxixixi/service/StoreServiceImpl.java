@@ -18,6 +18,7 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public void addStore(StoreModel store){
+        store.setStoreCode(store.getStoreCode());
         storeDb.save(store);
     }
 

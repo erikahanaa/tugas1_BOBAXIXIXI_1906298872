@@ -52,7 +52,8 @@
                         <p th:if = "${bobaTea.sugarLevel} == 0" th:text="'Sugar Level: Less'" ></td>
                         <p th:if = "${bobaTea.sugarLevel} == 1" th:text="'Sugar Level: Normal'" ></td>
                         <p th:if = "${bobaTea.sugarLevel} == 2" th:text="'Sugar Level: Extra'" ></td>
-                        <p th:text="'Topping        : ' + ${bobaTea.topping.namaTopping}"></p>
+                        <p th:if = "${bobaTea.topping} != null" th:text="'Topping        : ' + ${bobaTea.topping.namaTopping}"></p>
+                        <p th:if = "${bobaTea.topping} == null" th:text="'Topping        : No Topping'"></p>
                     </div>
                     <br>
                     <div class="d-flex justify-content-center">

@@ -75,10 +75,11 @@
 
                     Topping: <br>
                     <select name = "topping" class="form-control">
+                        <option th:value="null" th:text="'No Topping'"></option>
                         <option th:each = "topping : ${listTopping}"
                             th:text="${topping.namaTopping}"
                             th:value="${topping.idTopping}"
-                            th:selected="(${topping.idTopping} == *{topping.idTopping})">
+                            >
                         </option>
                     </select>
                     <br><br>

@@ -18,8 +18,8 @@
     </head>
 </head>
 <body>
-    <nav th:fragment="navbar(activeTab)" class="navbar navbar-expand-lg navbar-light bg-warning">
-        <a class = "navbar-brand font-weight-bold text-primary" href = "/"> BOBAXIXIXI </a>
+    <nav th:fragment="navbar(activeTab)" class="navbar navbar-expand-lg" style = "background-color: #5C3731;">
+        <a class = "navbar-brand font-weight-bold" style = "color: white" href = "/"> BOBAXIXIXI </a>
         <button
             class="navbar-toggler"
             type="button"
@@ -34,22 +34,22 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li th:class="${activeTab == 'store'}? 'font-weight-bold' : null">
-                    <a class="nav-item nav-link active text-secondary" th:href = "@{/store}">
+                    <a class="nav-item nav-link active text-white" th:href = "@{/store}">
                         Store<span class= "sr-only"></span>
                     </a>
                 </li>
                 <li th:class="${activeTab == 'bobaTea'}? 'font-weight-bold' : null">
-                    <a class="nav-item nav-link active text-secondary" th:href = "@{/boba}">
+                    <a class="nav-item nav-link active text-white" th:href = "@{/boba}">
                         Boba Tea<span class= "sr-only"></span>
                     </a>
                 </li>
                 <li th:class="${activeTab == 'search'}? 'font-weight-bold' : null">
-                    <a class="nav-item nav-link active text-secondary" th:href = "@{/search}">
+                    <a class="nav-item nav-link active text-white" th:href = "@{/search}">
                         Search<span class= "sr-only"></span>
                     </a>
                 </li>
                 <li th:class="${activeTab == 'filter'}? 'font-weight-bold' : null">
-                    <a class="nav-item nav-link active text-secondary" th:href = "@{/filter}">
+                    <a class="nav-item nav-link active text-white" th:href = "@{/filter}">
                         Filter<span class= "sr-only"></span>
                     </a>
                 </li>

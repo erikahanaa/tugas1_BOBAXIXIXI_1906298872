@@ -17,6 +17,7 @@ public class StoreBobaTeaServiceImpl implements StoreBobaTeaService{
 
     @Override
     public void addStoreBobaTea(StoreBobaTeaModel storeBobaTea){
+        storeBobaTea.setProductionCode(storeBobaTea.getProductionCode());
         storeBobaTeaDb.save(storeBobaTea);
     }
 
@@ -42,5 +43,10 @@ public class StoreBobaTeaServiceImpl implements StoreBobaTeaService{
         String productionCode;
         productionCode = "PC" + idStore + punyaTopping + idBobaTea;
         return productionCode;
+    }
+
+    @Override
+    public void deleteStoreBobaTea(StoreBobaTeaModel storeBobaTea){
+        storeBobaTeaDb.delete(storeBobaTea);
     }
 }

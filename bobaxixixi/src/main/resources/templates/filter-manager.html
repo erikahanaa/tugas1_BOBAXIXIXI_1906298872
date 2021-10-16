@@ -85,7 +85,7 @@
             <td th:text="${storeBobaTea.store.manager.namaManager}"></td>
             <td th:if = "${storeBobaTea.store.manager.genderManager} == 0" th:text="Female"></td>
             <td th:if = "${storeBobaTea.store.manager.genderManager} == 1" th:text="Male"></td>
-            <td th:text="${storeBobaTea.store.manager.tanggalLahirManager}"></td>
+            <td th:text="${#dates.format(storeBobaTea.store.manager.tanggalLahirManager, 'dd-MMM-yyyy')}"></td>
         </tr>
         </tbody>
     </table>

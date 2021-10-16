@@ -33,15 +33,15 @@
     }
 </style>
 <body>
-<nav th:replace= "fragments/fragment :: navbar('bobaTea')"></nav>
+<nav th:replace= "fragments/fragment :: navbar('store')"></nav>
 <div class="container">
     <div class="card m-4 p-4" style = "background-color: #FFFEF5;">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2 th:text="'Boba Tea with name ' + ${namaBoba} + ' successfully added!'"></h2>
+                <h2 th:text="'Boba Tea successfully added!'"></h2>
                 <br>
                 <div class="d-flex justify-content-center">
-                    <a id = "button" href="/store/">Back to Boba Tea List</a>
+                    <a id = "button" href="/store/">Back to Store List</a>
                 </div>
             </div>
         </div>
