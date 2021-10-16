@@ -6,4 +6,5 @@ import java.util.List;
 public interface StoreBobaTeaService {
     void addStoreBobaTea(StoreBobaTeaModel storeBobaTea);
     List<StoreBobaTeaModel> getListStoreBobaTea();
+    String getProductionCode(StoreBobaTeaModel storeBobaTea);
 }

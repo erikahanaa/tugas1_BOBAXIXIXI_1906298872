@@ -44,12 +44,12 @@
                     </a>
                 </li>
                 <li th:class="${activeTab == 'search'}? 'font-weight-bold' : null">
-                    <a class="nav-item nav-link active text-secondary">
+                    <a class="nav-item nav-link active text-secondary" th:href = "@{/search}">
                         Search<span class= "sr-only"></span>
                     </a>
                 </li>
                 <li th:class="${activeTab == 'filter'}? 'font-weight-bold' : null">
-                    <a class="nav-item nav-link active text-secondary">
+                    <a class="nav-item nav-link active text-secondary" th:href = "@{/filter}">
                         Filter<span class= "sr-only"></span>
                     </a>
                 </li>

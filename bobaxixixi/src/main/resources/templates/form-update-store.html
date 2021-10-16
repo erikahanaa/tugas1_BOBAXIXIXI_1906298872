@@ -13,6 +13,21 @@
     body {
       background-color: #FFFBE3;
     }
+    #button {
+        background-color: #B7633B;
+        color: white;
+        border: none;
+        padding: 10px 32px;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 10px;
+        margin: 10px;
+        
+    }
+    #button:hover {
+        background-color: #714033;
+        color: white;
+    }
 </style>   
 <body>
 <nav th:replace="fragments/fragment :: navbar('store')"></nav>
@@ -52,7 +67,9 @@
                     </select>
                     <br><br>
 
-                    <button class="btn btn-primary" type="submit" name="save">Submit</button>
+                    <div style = "text-align: center;">
+                        <button id="button" type="submit" name="save">Submit</button>
+                    </div>
 
                 </form>
             </div>

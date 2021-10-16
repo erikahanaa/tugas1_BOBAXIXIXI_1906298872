@@ -30,12 +30,12 @@
     }
 </style>
 <body>
-<nav th:replace= "fragments/fragment :: navbar('search')"></nav>
+<nav th:replace= "fragments/fragment :: navbar('filter')"></nav>
 <div class="container">
     <br>
     <br>
     <div class="d-flex justify-content-center">
-        <h1 style="font-family: 'Itim', cursive;">Search Boba Tea by Topping</h1>
+        <h1 style="font-family: 'Itim', cursive;">Filter Manager by Boba Tea</h1>
     </div>
     <table class="table">
             <form th:action="@{/search}" method="GET">
@@ -43,7 +43,6 @@
                     <br>
                 <tr style="background-color: #FFDCBD; text-align: center;">
                     <td style = "font-weight: bold;"> Boba Name </td>
-                    <td style = "font-weight: bold;"> Topping Name </td>
                     <td style = "font-weight: bold;"> Submit Button</td>
                 </tr>
                 </thead>
@@ -59,14 +58,6 @@
                     </td>
                     <td>
                         <div style = "text-align: center;">
-                            <select name="namaTopping">
-                                <option value="">Topping Name</option>
-                                <option th:each="topping : ${listTopping}" th:text="${topping.namaTopping}" th:value="${topping.namaTopping}"></option>
-                            </select>
-                        </div>
-                    </td>
-                    <td>
-                        <div style = "text-align: center;">
                             <button id = "button" type="submit"> Submit </button>
                         </div>
                     </td>
@@ -76,34 +67,25 @@
     </table>
 
     <div class="d-flex justify-content-center">
-        <h2 style="font-family: 'Itim', cursive;">Boba Tea Based on Topping</h2>
+        <h2 style="font-family: 'Itim', cursive;">Manager List Based on Boba Tea</h2>
     </div>
         <table class="table">
             <br>
         <thead>
         <tr style="background-color: #FFDCBD; text-align: center;">
             <td style = "font-weight: bold;"> No </td>
-            <td style = "font-weight: bold;"> Price </td>
-            <td style = "font-weight: bold;"> Size </td>
-            <td style = "font-weight: bold;"> Ice </td>
-            <td style = "font-weight: bold;"> Sugar </td>
-            <td style = "font-weight: bold;"> Store Name </td>
+            <td style = "font-weight: bold;"> Name </td>
+            <td style = "font-weight: bold;"> Gender </td>
+            <td style = "font-weight: bold;"> Date of Birth </td>
         </tr>
         </thead>
         <tbody>
         <tr th:each="storeBobaTea, iterationStatus : ${listStoreFix}" style = "text-align: center;">
             <td th:text="${iterationStatus.count}"></td>
-            <td th:text="${storeBobaTea.bobaTea.hargaBoba}"></td>
-            <td th:if = "${storeBobaTea.bobaTea.sizeBoba} == 0" th:text="Small"></td>
-            <td th:if = "${storeBobaTea.bobaTea.sizeBoba} == 1" th:text="Medium"></td>
-            <td th:if = "${storeBobaTea.bobaTea.sizeBoba} == 2" th:text="Large"></td>
-            <td th:if = "${storeBobaTea.bobaTea.iceLevel} == 0" th:text="Less"></td>
-            <td th:if = "${storeBobaTea.bobaTea.iceLevel} == 1" th:text="Normal"></td>
-            <td th:if = "${storeBobaTea.bobaTea.iceLevel} == 2" th:text="Extra"></td>
-            <td th:if = "${storeBobaTea.bobaTea.sugarLevel} == 0" th:text="Less"></td>
-            <td th:if = "${storeBobaTea.bobaTea.sugarLevel} == 1" th:text="Normal"></td>
-            <td th:if = "${storeBobaTea.bobaTea.sugarLevel} == 2" th:text="Extra"></td>
-            <td th:text="${storeBobaTea.store.namaStore}"></td>
+            <td th:text="${storeBobaTea.store.manager.namaManager}"></td>
+            <td th:if = "${storeBobaTea.store.manager.genderManager} == 0" th:text="Female"></td>
+            <td th:if = "${storeBobaTea.store.manager.genderManager} == 1" th:text="Male"></td>
+            <td th:text="${storeBobaTea.store.manager.tanggalLahirManager}"></td>
         </tr>
         </tbody>
     </table>

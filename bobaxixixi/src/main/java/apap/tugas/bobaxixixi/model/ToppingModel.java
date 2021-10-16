@@ -23,13 +23,11 @@ public class ToppingModel implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idTopping; //long or bigint ya
 
-    @NotNull
     @Size(max=255)
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = true)
     private String namaTopping;
 
-    @NotNull
-    @Column(name = "price", nullable = false)
+    @Column(name = "price", nullable = true)
     private Integer hargaTopping;
 
     // Relasi dengan Boba Tea

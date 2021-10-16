@@ -5,6 +5,7 @@ import apap.tugas.bobaxixixi.model.ManagerModel;
 import apap.tugas.bobaxixixi.model.StoreBobaTeaModel;
 import apap.tugas.bobaxixixi.service.StoreService;
 import apap.tugas.bobaxixixi.service.ManagerService;
+import apap.tugas.bobaxixixi.service.StoreBobaTeaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,10 @@ public class StoreController {
     @Qualifier("managerServiceImpl")
     @Autowired
     private ManagerService managerService;
+
+    @Qualifier("storeBobaTeaServiceImpl")
+    @Autowired
+    private StoreBobaTeaService storeBobaTeaService;
     
  
     @GetMapping("/store/add")

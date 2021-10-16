@@ -29,6 +29,21 @@
         background-color: #714033;
         color: white;
     }
+    #button2 {
+        background-color: #AC7566;
+        color: white;
+        border: none;
+        padding: 10px 32px;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 10px;
+        margin: 10px;
+        
+    }
+    #button2:hover {
+        background-color: #714033;
+        color: white;
+    }
 </style>
 <body>
 <nav th:replace= "fragments/fragment :: navbar('store')"></nav>
@@ -78,6 +93,10 @@
                         <div class="d-flex justify-content-center">
                             <p style= "font-size: 18px;">There is no Boba Tea available in this store.</p>
                         </div>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <a id = "button2" href="/store/">Add Boba To This Store</a>
                     </div>
                     <br>
                     <div class="d-flex justify-content-center">
