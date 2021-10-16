@@ -6,24 +6,51 @@
     <title>BOBAXIXIXI</title>
     <object th:include = "fragments/fragment :: css" th:remove="tag"></object>
     <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
+
+<style>
+    body {
+      background-color: #FFFBE3;
+    }
+    #button {
+        background-color: #B7633B;
+        color: white;
+        border: none;
+        padding: 10px 32px;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 10px;
+        margin: 10px;
+        
+    }
+    #button:hover {
+        background-color: #714033;
+        color: white;
+    }
+</style>
  
 <body>
 <nav th:replace= "fragments/fragment :: navbar('store')"></nav>
     <div class="container">
-        <div class="card m-4 p-4">
+        <div class="card m-4 p-4" style = "background-color: #FFFEF5;">
             <div class="card-body">
                 <div class="justify-content-center">
                     <div class="col">
                         <br>
-                        <h2>List of Store </h2>
-                        <td>
-                            <a class="btn btn-sm btn-primary" th:href="@{/store/add/}">Add Store</a>
-                        </td>
+                        <div class="d-flex justify-content-center">
+                            <h1 style="font-family: 'Itim', cursive;">List of Store</h1>
+                        </div>
+                        <br>
+                        <a id = "button" th:href="@{/store/add/}">+ Add Store</a>
+                        <br>
                         <div th:if = "*{listStore.size() != 0}">
                             <table class = "table">
+                                <br>
                                 <thead>
-                                    <tr>
+                                    <tr style="background-color: #FFDCBD; text-align: center;">
                                         <th> No </th>
                                         <th> Store Code</th>
                                         <th> Name </th>
@@ -35,8 +62,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each = "store, iterationStatus : ${listStore}"
-                                        th:style = "${iterationStatus.even} ? 'font-weight: bold;'">
+                                    <tr th:each = "store, iterationStatus : ${listStore}" style = "text-align: center;">
                                         <td th:text = "${iterationStatus.count}"></td>
                                         <td th:text = "${store.storeCode}"></td>
                                         <td th:text = "${store.namaStore}"></td>
@@ -50,7 +76,7 @@
                                         </td>
                                         <td>
                                             <form th:action="@{/store/delete/} + ${store.idStore}" th:object="${store}" method="POST">
-                                            <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                                            <button class="btn btn-sm btn-danger" type="submit">Delete</a>
                                             <input type="hidden" th:value="${store.idStore}"/>
                                             </form>
                                         </td>
@@ -63,9 +89,11 @@
                             <h2 th:text = "'There is no available Store to show.'"></h2>
                         </div>
                         <hr>
-                    </div>
+                        </div>
                         <br>
-                        <a class="btn btn-primary" href="/#">Back to Home</a>
+                        <div class="d-flex justify-content-center">
+                            <a id = "button" href="/#">Back to Home</a>
+                        </div>
                     </div>
                 </div>
             </div>

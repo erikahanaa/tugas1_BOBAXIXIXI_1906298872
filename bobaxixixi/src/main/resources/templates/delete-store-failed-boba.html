@@ -5,16 +5,44 @@
     <title>BOBAXIXIXI</title>
     <object th:include = "fragments/fragment :: css" th:remove="tag"></object>
     <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
+<style>
+    body {
+      background-color: #FFFBE3;
+    }
+    h2{
+        font-family: 'Itim', cursive;
+    }
+    #button {
+        background-color: #B7633B;
+        color: white;
+        border: none;
+        padding: 10px 32px;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 10px;
+        margin: 10px;
+        
+    }
+    #button:hover {
+        background-color: #714033;
+        color: white;
+    }
+</style>
 <body>
 <nav th:replace= "fragments/fragment :: navbar('store')"></nav>
 <div class="container">
-    <div class="card m-4 p-4">
+    <div class="card m-4 p-4" style = "background-color: #FFFEF5;">
         <div class="card-body">
             <div class="justify-content-center">
                 <h2 th:text="'Store with store code ' + ${storeCode} + ' cannot be deleted because it still has Boba!'"></h2>
                 <br>
-                <a class="btn btn-primary" href="/store/">Back to Store List</a>
+                <div class="d-flex justify-content-center">
+                    <a id = "button" href="/store/">Back to Store List</a>
+                </div>
             </div>
         </div>
     </div>

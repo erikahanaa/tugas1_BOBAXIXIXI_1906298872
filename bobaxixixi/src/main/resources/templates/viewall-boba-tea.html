@@ -6,24 +6,49 @@
     <title>BOBAXIXIXI</title>
     <object th:include = "fragments/fragment :: css" th:remove="tag"></object>
     <object th:include = "fragments/fragment :: js" th:remove="tag"></object>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
- 
+<style>
+    body {
+      background-color: #FFFBE3;
+    }
+    #button {
+        background-color: #B7633B;
+        color: white;
+        border: none;
+        padding: 10px 32px;
+        text-align: center;
+        font-size: 14px;
+        border-radius: 10px;
+        margin: 10px;
+        
+    }
+    #button:hover {
+        background-color: #714033;
+        color: white;
+    }
+</style>
 <body>
 <nav th:replace= "fragments/fragment :: navbar('bobaTea')"></nav>
     <div class="container">
-        <div class="card m-4 p-4">
+        <div class="card m-4 p-4" style = "background-color: #FFFEF5;">
             <div class="card-body">
                 <div class="justify-content-center">
                     <div class="col">
                         <br>
-                        <h2>List of Boba Tea </h2>
+                        <div class="d-flex justify-content-center">
+                            <h1 style="font-family: 'Itim', cursive;">List of Boba Tea</h1>
+                        </div>
                         <td>
-                            <a class="btn btn-sm btn-primary" th:href="@{/boba/add/}">Add Boba Tea</a>
+                            <a id="button" th:href="@{/boba/add/}">+ Add Boba Tea</a>
                         </td>
                         <div th:if = "*{listBobaTea.size() != 0}">
                             <table class = "table">
+                                <br>
                                 <thead>
-                                    <tr>
+                                    <tr style="background-color: #FFDCBD; text-align: center;">
                                         <th> No </th>
                                         <th> Name</th>
                                         <th> Price </th>
@@ -37,8 +62,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each = "bobaTea, iterationStatus : ${listBobaTea}"
-                                        th:style = "${iterationStatus.even} ? 'font-weight: bold;'">
+                                    <tr th:each = "bobaTea, iterationStatus : ${listBobaTea}" style = "text-align: center;">
                                         <td th:text = "${iterationStatus.count}"></td>
                                         <td th:text = "${bobaTea.namaBoba}"></td>
                                         <td th:text = "${bobaTea.hargaBoba}"></td>
@@ -66,7 +90,7 @@
                                         </td>
                                         <td>
                                             <form th:action="@{/boba/delete/} + ${bobaTea.idBoba}" th:object="${bobaTea}" method="POST">
-                                            <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                                            <button class="btn btn-sm btn-danger" type="submit">Delete</a>
                                             <input type="hidden" th:value="${bobaTea.idBoba}"/>
                                             </form>
                                         </td>
@@ -81,7 +105,9 @@
                         <hr>
                     </div>
                         <br>
-                        <a class="btn btn-primary" href="/#">Back to Home</a>
+                        <div class="d-flex justify-content-center">
+                            <a id = "button" href="/#">Back to Home</a>
+                        </div>
                     </div>
                 </div>
             </div>

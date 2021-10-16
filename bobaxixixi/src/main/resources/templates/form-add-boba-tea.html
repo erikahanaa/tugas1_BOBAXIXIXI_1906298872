@@ -5,14 +5,24 @@
     <title>BOBAXIXIXI</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-    </head>    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+</head> 
+<style>
+    body {
+      background-color: #FFFBE3;
+    }
+</style>   
 <body>
 <nav th:replace="fragments/fragment :: navbar('bobaTea')"></nav>
 <div class="container">
-    <div class="card m-4 p-4">
+    <div class="card m-4 p-4" style = "background-color: #FFFEF5;">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2>Add New Boba Tea</h2>
+                <div class="d-flex justify-content-center">
+                    <h1 style="font-family: 'Itim', cursive;">Add New Boba Tea</h1>
+                </div>
                 <br>
                 <form th:action="@{/boba/add}" th:object="${bobaTea}" method="POST">
                     Boba Tea Name: <br>
